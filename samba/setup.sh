@@ -87,8 +87,8 @@ if [ -z "$container" ]; then
 	usage
 fi
 
-+volFmt="{{if .Config.Volumes}}{{range \$k, \$v := .Config.Volumes}}{{println \$k}}{{end}}{{else}}{{range \$k, \$v := .Volumes}}{{println \$k}}{{end}}{{end}}"
-+if ! $docker inspect --format="$volFmt" $container > /inspect; then
+volFmt="{{if .Config.Volumes}}{{range \$k, \$v := .Config.Volumes}}{{println \$k}}{{end}}{{else}}{{range \$k, \$v := .Volumes}}{{println \$k}}{{end}}{{end}}"
+if ! $docker inspect --format="$volFmt" $container > /inspect; then
 	echo "Error: $container is not a valid container name: $_"
 	usage
 fi
